@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwhvsq0pa5kr4"]
+
+[ext_resource type="Script" uid="uid://cvynn02khr1qo" path="res://script/object.gd" id="1_m041a"]
+[ext_resource type="Texture2D" uid="uid://c1rst4m1iwh2d" path="res://sprites/items/banana.png" id="2_m041a"]
+
+[node name="FallingObject" type="RigidBody2D"]
+script = ExtResource("1_m041a")
+metadata/_custom_type_script = "uid://cvynn02khr1qo"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_m041a")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(81, -65, 82, -43, 89, -24, 80, 27, 62, 51, 24, 69, -1, 74, -48, 65, -62, 41, -89, 16, -82, 3, -81, 4, -67, -15, -40, -5, 5, -1, 31, -27, 35, -41, 57, -56, 68, -72)

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bals2ky8g5qrf"]
+
+[ext_resource type="Script" uid="uid://cvynn02khr1qo" path="res://script/object.gd" id="1_3xggf"]
+[ext_resource type="Texture2D" uid="uid://6u1shkuiru5p" path="res://sprites/items/acorn_1.png" id="2_xwoxi"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fufry"]
+radius = 65.0077
+
+[node name="FallingObject" type="RigidBody2D"]
+script = ExtResource("1_3xggf")
+metadata/_custom_type_script = "uid://cvynn02khr1qo"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_xwoxi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
+shape = SubResource("CircleShape2D_fufry")
