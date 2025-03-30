@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dnh175xov4wvk"]
+
+[ext_resource type="Script" uid="uid://cvynn02khr1qo" path="res://script/object.gd" id="1_8etu7"]
+[ext_resource type="Texture2D" uid="uid://blk3mtxdk8ctc" path="res://sprites/items/bone.png" id="2_8etu7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1fc1v"]
+size = Vector2(23.7276, 134.79)
+
+[node name="FallingObject" type="RigidBody2D"]
+script = ExtResource("1_8etu7")
+metadata/_custom_type_script = "uid://cvynn02khr1qo"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_8etu7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2.73023, 0.943142)
+rotation = -0.507891
+shape = SubResource("RectangleShape2D_1fc1v")

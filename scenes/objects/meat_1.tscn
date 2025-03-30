@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgfhl4dhwomfk"]
+
+[ext_resource type="Script" uid="uid://cvynn02khr1qo" path="res://script/object.gd" id="1_jngrv"]
+[ext_resource type="Texture2D" uid="uid://gabkflgbjubu" path="res://sprites/items/meat_1.png" id="2_hnktn"]
+
+[node name="FallingObject" type="RigidBody2D"]
+script = ExtResource("1_jngrv")
+metadata/_custom_type_script = "uid://cvynn02khr1qo"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_hnktn")
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(1, 0)
+polygon = PackedVector2Array(-23, -45, -10, -51, 19, -50, 23, -44, 63, -43, 73, -25, 83, 1, 76, 21, 55, 34, 41, 43, 16, 46, -31, 52, -50, 41, -51, 37, -61, 36, -83, 15, -83, -18, -50, -42, -41, -40, -37, -46)

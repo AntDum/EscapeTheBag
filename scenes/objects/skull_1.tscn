@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://78p8iyeri72c"]
+
+[ext_resource type="Script" uid="uid://cvynn02khr1qo" path="res://script/object.gd" id="1_74ae5"]
+[ext_resource type="Texture2D" uid="uid://dn1ok3k7jjgj6" path="res://sprites/items/skull_1.png" id="2_74ae5"]
+
+[node name="FallingObject" type="RigidBody2D"]
+script = ExtResource("1_74ae5")
+metadata/_custom_type_script = "uid://cvynn02khr1qo"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_74ae5")
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(1, 0)
+polygon = PackedVector2Array(-38, -71, -26, -30, -13, -28, 20, -53, 52, -50, 71, -27, 70, 8, 48, 33, 19, 31, 6, 20, -9, 32, -8, 38, -30, 45, -56, 70, -62, 38, -55, 14, -70, 8, -74, -12, -69, -16, -56, 1, -52, -11, -58, -30, -57, -53, -49, -59, -46, -70)

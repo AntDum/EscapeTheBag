@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1e5lkswduvvh"]
+
+[ext_resource type="Script" uid="uid://cvynn02khr1qo" path="res://script/object.gd" id="1_0mmli"]
+[ext_resource type="Texture2D" uid="uid://d04w1cmh3hglt" path="res://sprites/items/bottle_1.png" id="2_0mmli"]
+
+[node name="FallingObject" type="RigidBody2D"]
+script = ExtResource("1_0mmli")
+metadata/_custom_type_script = "uid://cvynn02khr1qo"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_0mmli")
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(1, 0)
+polygon = PackedVector2Array(-20, -88, 22, -86, 18, -7, 44, 13, 39, 79, 24, 95, -24, 94, -35, 85, -46, 11, -22, 3)
