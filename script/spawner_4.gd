@@ -16,11 +16,16 @@ func spawn_object() -> void:
 	spawned += 1
 	if spawned >= max:
 		queue_free()
-	var new_object : RigidBody2D = load(ObjectList.get_random_item()).instantiate()
-	new_object.gravity_scale = 0.07
-	new_object.global_position = get_random_spawn_point()
-	platforms.add_child(new_object)
-	new_object.linear_velocity = Vector2(0, 10)
+		
+	var random_scene : PackedScene = ObjectList.get_random_item()
+	if random_scene:
+		var new_object : RigidBody2D = random_scene.instantiate()
+		new_object.gravity_scale = 0.07
+		new_object.global_position = get_random_spawn_point()
+		platforms.add_child(new_object)
+		new_object.linear_velocity = Vector2(0, 10)
+	else:
+		push_error("No scene to load")
 
 func get_random_spawn_point() -> Vector2:
 	spawn_point.progress_ratio = rng.randf()
