@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://dwhvsq0pa5kr4"]
 
 [ext_resource type="Script" uid="uid://cvynn02khr1qo" path="res://script/object.gd" id="1_m041a"]
-[ext_resource type="Texture2D" uid="uid://c1rst4m1iwh2d" path="res://sprites/items/banana.png" id="2_m041a"]
+[ext_resource type="Texture2D" uid="uid://nq2tqco7umm2" path="res://sprites/items/banana.png" id="2_m041a"]
 
-[node name="FallingObject" type="RigidBody2D"]
+[node name="FallingObject2" type="RigidBody2D"]
 script = ExtResource("1_m041a")
 metadata/_custom_type_script = "uid://cvynn02khr1qo"
 
