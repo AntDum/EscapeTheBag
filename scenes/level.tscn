@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://hkktpm84wqu2"]
+[gd_scene load_steps=9 format=3 uid="uid://hkktpm84wqu2"]
 
 [ext_resource type="Script" uid="uid://cc1mrxff6ievj" path="res://script/game_manager.gd" id="1_mx8sn"]
 [ext_resource type="PackedScene" uid="uid://blho4p6ofj3q0" path="res://scenes/player.tscn" id="1_w8frs"]
+[ext_resource type="Texture2D" uid="uid://bpedcou1wbhlx" path="res://sprites/bckg.png" id="4_mx8sn"]
 [ext_resource type="Script" uid="uid://0ndhede8g0ex" path="res://script/spawner.gd" id="4_ppgk2"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_w8frs"]
@@ -17,6 +18,17 @@ _data = {
 point_count = 2
 
 [node name="Node2D" type="Node2D"]
+
+[node name="Bckg" type="Sprite2D" parent="."]
+position = Vector2(672, 1278)
+scale = Vector2(1.32227, 1.4209)
+texture = ExtResource("4_mx8sn")
+
+[node name="Bckg" type="Sprite2D" parent="Bckg"]
+position = Vector2(-0.00147903, -1216.55)
+rotation = 3.14159
+scale = Vector2(0.999997, 1.3761)
+texture = ExtResource("4_mx8sn")
 
 [node name="GameManager" type="Node2D" parent="."]
 script = ExtResource("1_mx8sn")

@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1fc1v"]
 size = Vector2(55.4129, 168.38)
 
-[node name="FallingObject" type="RigidBody2D"]
+[node name="FallingObject2" type="RigidBody2D"]
 script = ExtResource("1_g401l")
 metadata/_custom_type_script = "uid://cvynn02khr1qo"
 
@@ -16,5 +16,4 @@ texture = ExtResource("2_g401l")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.471442, 5.08088)
 rotation = -0.633555
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_1fc1v")
