@@ -4,13 +4,14 @@ extends Path2D
 @onready var spawn_point: PathFollow2D = $SpawnPoint
 @onready var platforms: Node2D = $"../Platforms"
 
-@export var min_delay: float = 0.5
-@export var max_delay: float = 2.0 
+@export var min_delay: float = 1.5
+@export var max_delay: float = 3.0 
 
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 
 func spawn_object() -> void:
 	var new_object : RigidBody2D = load(ObjectList.get_random_item()).instantiate()
+	new_object.gravity_scale = 30
 	new_object.global_position = get_random_spawn_point()
 	new_object.linear_velocity = Vector2(0, 10)
 	new_object.angular_velocity = rng.randf_range(-5, 5)

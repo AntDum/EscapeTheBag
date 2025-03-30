@@ -61,6 +61,7 @@ curve = SubResource("Curve2D_w8frs")
 script = ExtResource("4_ppgk2")
 
 [node name="Timer" type="Timer" parent="Spawner"]
+wait_time = 2.0
 autostart = true
 
 [node name="SpawnPoint" type="PathFollow2D" parent="Spawner"]
