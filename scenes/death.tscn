@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://cc3srmth1qftd"]
+
+[ext_resource type="Script" uid="uid://1r4vmcnsjjbn" path="res://script/death.gd" id="1_0hhgj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w8wr1"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0hhgj")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Your teammate killed you"
+
+[node name="HSeparator" type="HSeparator" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_w8wr1")
+
+[node name="AgainButton" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Play again"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/AgainButton" to="." method="_on_again_button_pressed"]

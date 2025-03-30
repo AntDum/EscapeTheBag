@@ -6,6 +6,7 @@ const AIR_SPEED = 400.0
 const SPEED = 500.0
 const JUMP_VELOCITY = -600.0
 
+const DEATH = preload("res://scenes/death.tscn")
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -15,10 +16,9 @@ func _physics_process(delta: float) -> void:
 			$Sprite2D.play("fall")
 	else:
 		if death_ray.is_colliding():
-			print("Erg")
+			var collider = death_ray.get_collider()
+			get_tree().change_scene_to_packed(DEATH)
 		
-
-
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.

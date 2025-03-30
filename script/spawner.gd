@@ -2,7 +2,7 @@ extends Path2D
 
 @onready var timer: Timer = $Timer
 @onready var spawn_point: PathFollow2D = $SpawnPoint
-@onready var platforms: Node2D = $"../Platforms"
+@onready var platforms: Node2D = $"../../Platforms"
 
 @export var min_delay: float = 1.5
 @export var max_delay: float = 3.0 
