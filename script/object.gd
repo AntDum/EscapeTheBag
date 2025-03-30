@@ -2,7 +2,7 @@ class_name FallingObject
 extends RigidBody2D
 
 func _ready() -> void:
-	scale *= 2 # Replace with function body.
+	pass
 
 func _process(delta: float) -> void:
 	pass
