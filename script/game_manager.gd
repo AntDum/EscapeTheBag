@@ -5,7 +5,7 @@ extends Node2D
 @onready var platforms: Node2D = $"../Platforms"
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 
-var ob = preload("res://scenes/objects/debug_object.tscn")
+var ob = preload("res://scenes/objects/sword.tscn")
 
 func _ready() -> void:
 	pass # Replace with function body.

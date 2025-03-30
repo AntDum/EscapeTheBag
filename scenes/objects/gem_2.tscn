@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://db7taap3ya2vm"]
+
+[ext_resource type="Script" uid="uid://cvynn02khr1qo" path="res://script/object.gd" id="1_6sjos"]
+[ext_resource type="Texture2D" uid="uid://bw8ccb2sohav1" path="res://sprites/items/gem_2.png" id="2_6sjos"]
+
+[node name="FallingObject" type="RigidBody2D"]
+script = ExtResource("1_6sjos")
+metadata/_custom_type_script = "uid://cvynn02khr1qo"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_6sjos")
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(1, 0)
+polygon = PackedVector2Array(-49, -60, -23, -67, 45, -63, 66, -29, 0, 65, -68, -28)

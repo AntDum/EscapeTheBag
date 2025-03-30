@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://baa737kqyrdeo"]
+
+[ext_resource type="Script" uid="uid://cvynn02khr1qo" path="res://script/object.gd" id="1_1psfr"]
+[ext_resource type="Texture2D" uid="uid://glt6b8fgxbtx" path="res://sprites/items/bag_3.png" id="2_1psfr"]
+
+[node name="FallingObject" type="RigidBody2D"]
+script = ExtResource("1_1psfr")
+metadata/_custom_type_script = "uid://cvynn02khr1qo"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_1psfr")
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(1, 0)
+polygon = PackedVector2Array(-35, -94, 8, -93, 29, -94, 54, -80, 79, -35, 79, -15, 84, 4, 97, 14, 101, 50, 83, 73, 55, 81, 24, 78, 3, 86, -20, 75, -36, 64, -77, 59, -99, 34, -103, -31, -80, -62)

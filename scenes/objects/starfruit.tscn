@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://fiugp87tj5bx"]
+
+[ext_resource type="Script" uid="uid://cvynn02khr1qo" path="res://script/object.gd" id="1_a4rkg"]
+[ext_resource type="Texture2D" uid="uid://bjgw4m5f6m1k1" path="res://sprites/items/starfruit.png" id="2_a4rkg"]
+
+[node name="FallingObject" type="RigidBody2D"]
+script = ExtResource("1_a4rkg")
+metadata/_custom_type_script = "uid://cvynn02khr1qo"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_a4rkg")
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(1, 0)
+polygon = PackedVector2Array(-32, -65, -6, -40, 40, -35, 68, 1, 73, 32, 84, 54, 62, 72, 43, 90, 27, 77, -6, 65, -43, 59, -53, 19, -87, -5, -48, -29)

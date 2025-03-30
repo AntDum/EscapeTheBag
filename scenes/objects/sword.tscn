@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdtlmpr0v1s8k"]
+
+[ext_resource type="Script" uid="uid://cvynn02khr1qo" path="res://script/object.gd" id="1_ppth7"]
+[ext_resource type="Texture2D" uid="uid://3lmyopp86xvx" path="res://sprites/items/sword.png" id="2_ppth7"]
+
+[node name="FallingObject" type="RigidBody2D"]
+script = ExtResource("1_ppth7")
+metadata/_custom_type_script = "uid://cvynn02khr1qo"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ppth7")
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(1, 0)
+polygon = PackedVector2Array(67, -88, 64, -64, 5, 22, 20, 42, 18, 47, -17, 43, -20, 53, -32, 59, -61, 89, -70, 84, -46, 52, -46, 40, -48, 35, -40, 29, -37, 16, -50, -3, -47, -10, -26, 4)
