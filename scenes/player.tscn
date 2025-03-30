@@ -197,10 +197,11 @@ script = ExtResource("1_3vyb7")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_dt7fs")
-animation = &"jump"
+animation = &"idle"
 autoplay = "idle"
+frame_progress = 0.763959
 
-[node name="CapsuleShape2D" type="CapsuleShape2D" parent="."]
+[node name="CapsuleShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-14, 31)
 shape = SubResource("CapsuleShape2D_dqkch")
 
