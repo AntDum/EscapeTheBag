@@ -53,6 +53,7 @@ shape = SubResource("WorldBoundaryShape2D_ppgk2")
 disabled = true
 
 [node name="Platforms" type="Node2D" parent="."]
+scale = Vector2(3, 3)
 
 [node name="Spawner" type="Path2D" parent="."]
 position = Vector2(51, -1000)
