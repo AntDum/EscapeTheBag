@@ -1,5 +1,20 @@
 extends Node
 
+const LEVEL = preload("res://scenes/level.tscn")
+const WIN = preload("res://scenes/win.tscn")
+const DEATH = preload("res://scenes/death.tscn")
+
+func play() -> void:
+	get_tree().change_scene_to_packed(LEVEL)
+
+func win() -> void:
+	get_tree().change_scene_to_packed(WIN)
+
+func lost() -> void:
+	get_tree().change_scene_to_packed(DEATH)
+	
+
+
 var scenes := []
 
 func _ready() -> void:

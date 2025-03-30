@@ -1,10 +1,13 @@
 extends CharacterBody2D
 
+@onready var game_manager: GameManager = $"../GameManager"
+
+
 @onready var death_ray: RayCast2D = $RayCast2D
 
 const AIR_SPEED = 400.0
 const SPEED = 500.0
-const JUMP_VELOCITY = -600.0
+const JUMP_VELOCITY = -1000.0
 
 const DEATH = preload("res://scenes/death.tscn")
 
@@ -17,7 +20,8 @@ func _physics_process(delta: float) -> void:
 	else:
 		if death_ray.is_colliding():
 			var collider = death_ray.get_collider()
-			get_tree().change_scene_to_packed(DEATH)
+			
+			ObjectList.lost()
 		
 
 	# Get the input direction and handle the movement/deceleration.

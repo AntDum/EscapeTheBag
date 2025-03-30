@@ -7,9 +7,15 @@ extends Path2D
 @export var min_delay: float = 1.5
 @export var max_delay: float = 3.0 
 
+var spawned = 0
+var max = 5
+
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 
 func spawn_object() -> void:
+	spawned += 1
+	if spawned >= max:
+		queue_free()
 	var new_object : RigidBody2D = load(ObjectList.get_random_item()).instantiate()
 	new_object.gravity_scale = 0.07
 	new_object.global_position = get_random_spawn_point()
