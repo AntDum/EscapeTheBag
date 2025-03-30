@@ -1,15 +1,19 @@
 extends CharacterBody2D
 
+@onready var death_ray: RayCast2D = $RayCast2D
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -1000.0
-@export var GRAVITY = Vector2(0, 980)
 
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
-		velocity += GRAVITY * delta
+		velocity += get_gravity() * delta
+	else:
+		if death_ray.is_colliding():
+			print("Erg")
+		
 
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
@@ -21,6 +25,6 @@ func _physics_process(delta: float) -> void:
 	if direction:
 		velocity.x = direction * SPEED
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, SPEED/2)
 
 	move_and_slide()

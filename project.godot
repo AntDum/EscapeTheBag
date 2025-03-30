@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Trijam#315"
-run/main_scene="uid://hkktpm84wqu2"
+run/main_scene="uid://driaf8834xycd"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -24,6 +24,10 @@ ObjectList="*res://singletons/object_list.gd"
 window/size/viewport_width=1280
 window/size/viewport_height=720
 window/stretch/mode="viewport"
+
+[gui]
+
+theme/custom="uid://6m2p03f7gvkl"
 
 [input]
 
@@ -64,7 +68,6 @@ right={
 [physics]
 
 common/physics_jitter_fix=0.0
-2d/default_gravity=150.0
 common/physics_interpolation=true
 
 [rendering]

@@ -12,7 +12,8 @@ var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 func spawn_object() -> void:
 	var new_object : RigidBody2D = load(ObjectList.get_random_item()).instantiate()
 	new_object.global_position = get_random_spawn_point()
-	new_object.angular_velocity = rng.randf_range(-1, 1)
+	new_object.linear_velocity = Vector2(0, 10)
+	new_object.angular_velocity = rng.randf_range(-5, 5)
 	platforms.add_child(new_object)
 
 func get_random_spawn_point() -> Vector2:
