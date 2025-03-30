@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://hkktpm84wqu2"]
+[gd_scene load_steps=10 format=3 uid="uid://hkktpm84wqu2"]
 
 [ext_resource type="Script" uid="uid://cc1mrxff6ievj" path="res://script/game_manager.gd" id="1_mx8sn"]
 [ext_resource type="PackedScene" uid="uid://dgyvebnihxaas" path="res://scenes/object.tscn" id="1_w7c3h"]
@@ -8,6 +8,8 @@
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_w8frs"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mx8sn"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ppgk2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mx8sn"]
 size = Vector2(128, 130)
@@ -46,6 +48,14 @@ position = Vector2(1280, 0)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Right"]
 rotation = 4.71239
 shape = SubResource("WorldBoundaryShape2D_w8frs")
+
+[node name="Area2D" type="Area2D" parent="Walls"]
+position = Vector2(57, -96)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Area2D"]
+rotation = 3.14159
+shape = SubResource("WorldBoundaryShape2D_ppgk2")
+disabled = true
 
 [node name="Platforms" type="Node2D" parent="."]
 

@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD
 uid="uid://def8ovd73ya6f"
+=======
+uid="uid://bek132c8p8ccq"
+>>>>>>> 623fb1e5b4b909af7d28931bf2980bfd18b5cd03
 path="res://.godot/imported/chili_pepper.png-e36acd04bd5ecd7b86c2274e8a984f2c.ctex"
 metadata={
 "vram_texture": false

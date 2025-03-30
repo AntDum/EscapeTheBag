@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD
 uid="uid://bur7dq652hgxo"
+=======
+uid="uid://c01ofcegg6fth"
+>>>>>>> 623fb1e5b4b909af7d28931bf2980bfd18b5cd03
 path="res://.godot/imported/une_sacree_paire_de_couilles.png-e3432688c279f4a6e625bb6d74c3d13e.ctex"
 metadata={
 "vram_texture": false

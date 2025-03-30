@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD
 uid="uid://cgnku7k8fuorb"
+=======
+uid="uid://ejani0fo4b7n"
+>>>>>>> 623fb1e5b4b909af7d28931bf2980bfd18b5cd03
 path="res://.godot/imported/spring.png-f94ed2cb54dc70aa6115ecc161395e32.ctex"
 metadata={
 "vram_texture": false

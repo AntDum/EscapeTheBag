@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD
 uid="uid://bc1wlb7qytfx7"
+=======
+uid="uid://buxfpt2q8kkeh"
+>>>>>>> 623fb1e5b4b909af7d28931bf2980bfd18b5cd03
 path="res://.godot/imported/acorn_2.png-ad8e588a8ed52416e94554f5f1952797.ctex"
 metadata={
 "vram_texture": false
