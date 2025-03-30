@@ -1,18 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://hkktpm84wqu2"]
+[gd_scene load_steps=8 format=3 uid="uid://hkktpm84wqu2"]
 
 [ext_resource type="Script" uid="uid://cc1mrxff6ievj" path="res://script/game_manager.gd" id="1_mx8sn"]
-[ext_resource type="PackedScene" uid="uid://dgyvebnihxaas" path="res://scenes/object.tscn" id="1_w7c3h"]
 [ext_resource type="PackedScene" uid="uid://blho4p6ofj3q0" path="res://scenes/player.tscn" id="1_w8frs"]
-[ext_resource type="Texture2D" uid="uid://njkn36vn2hvs" path="res://icon.svg" id="2_w8frs"]
+[ext_resource type="Script" uid="uid://0ndhede8g0ex" path="res://script/spawner.gd" id="4_ppgk2"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_w8frs"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mx8sn"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ppgk2"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mx8sn"]
-size = Vector2(128, 130)
 
 [sub_resource type="Curve2D" id="Curve2D_w8frs"]
 _data = {
@@ -24,9 +20,6 @@ point_count = 2
 
 [node name="GameManager" type="Node2D" parent="."]
 script = ExtResource("1_mx8sn")
-
-[node name="Timer" type="Timer" parent="GameManager"]
-autostart = true
 
 [node name="Walls" type="Node2D" parent="."]
 
@@ -50,7 +43,9 @@ rotation = 4.71239
 shape = SubResource("WorldBoundaryShape2D_w8frs")
 
 [node name="Area2D" type="Area2D" parent="Walls"]
-position = Vector2(57, -96)
+position = Vector2(0, -200)
+collision_layer = 2
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Area2D"]
 rotation = 3.14159
@@ -59,21 +54,29 @@ disabled = true
 
 [node name="Platforms" type="Node2D" parent="."]
 
-[node name="Object" parent="Platforms" instance=ExtResource("1_w7c3h")]
-position = Vector2(149, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="Platforms/Object"]
-texture = ExtResource("2_w8frs")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Object"]
-position = Vector2(1, 0)
-shape = SubResource("RectangleShape2D_mx8sn")
-
-[node name="SpawnPositions" type="Path2D" parent="."]
+[node name="Spawner" type="Path2D" parent="."]
+position = Vector2(51, -1000)
+scale = Vector2(0.382031, 1)
 curve = SubResource("Curve2D_w8frs")
+script = ExtResource("4_ppgk2")
 
-[node name="SpawnPoint" type="PathFollow2D" parent="SpawnPositions"]
-unique_name_in_owner = true
+[node name="Timer" type="Timer" parent="Spawner"]
+autostart = true
+
+[node name="SpawnPoint" type="PathFollow2D" parent="Spawner"]
+position = Vector2(1280, 0)
+rotation = 3.14159
+
+[node name="Spawner2" type="Path2D" parent="."]
+position = Vector2(617, -1000)
+scale = Vector2(0.471094, 1)
+curve = SubResource("Curve2D_w8frs")
+script = ExtResource("4_ppgk2")
+
+[node name="Timer" type="Timer" parent="Spawner2"]
+autostart = true
+
+[node name="SpawnPoint" type="PathFollow2D" parent="Spawner2"]
 position = Vector2(1280, 0)
 rotation = 3.14159
 
@@ -87,4 +90,6 @@ limit_bottom = 2000
 limit_smoothed = true
 drag_vertical_enabled = true
 
-[connection signal="timeout" from="GameManager/Timer" to="GameManager" method="_on_timer_timeout"]
+[connection signal="body_entered" from="Walls/Area2D" to="GameManager" method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Spawner/Timer" to="Spawner" method="_on_timer_timeout"]
+[connection signal="timeout" from="Spawner2/Timer" to="Spawner2" method="_on_timer_timeout"]
