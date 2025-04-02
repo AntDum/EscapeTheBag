@@ -1,9 +1,5 @@
 extends Node
 
-const LEVEL = preload("res://scenes/level.tscn")
-const WIN = preload("res://scenes/win.tscn")
-const DEATH = preload("res://scenes/death.tscn")
-
 
 const ACORN_1 = preload("res://scenes/objects/acorn_1.tscn")
 const ACORN_3 = preload("res://scenes/objects/acorn_3.tscn")
@@ -30,16 +26,6 @@ const SKULL_1 = preload("res://scenes/objects/skull_1.tscn")
 const STARFRUIT = preload("res://scenes/objects/starfruit.tscn")
 const SWORD = preload("res://scenes/objects/sword.tscn")
 
-
-func play() -> void:
-	get_tree().change_scene_to_packed(LEVEL)
-
-func win() -> void:
-	get_tree().change_scene_to_packed(WIN)
-
-func lost() -> void:
-	get_tree().change_scene_to_packed(DEATH)
-	
 
 var scenes := [
 	ACORN_1,
@@ -74,30 +60,3 @@ func get_random_item() -> PackedScene:
 	
 	randomize() # Initialise le générateur aléatoire
 	return scenes[randi() % scenes.size()]
-
-
-
-#
-#func _ready() -> void:
-	#load_scenes_from_directory("res://scenes/objects/")
-#
-#func load_scenes_from_directory(directory_path: String) -> bool:
-	#var dir = DirAccess.open(directory_path)
-	#
-	#if !dir:
-		#push_error("Impossible d'accéder au répertoire : " + directory_path)
-		#return false
-		#
-	#dir.list_dir_begin()
-	#
-	#var file_name := dir.get_next()
-	#while file_name != "":
-		#if !dir.current_is_dir():
-			#if file_name.ends_with(".tscn"):
-				#scenes.append(directory_path + file_name)
-		#
-		#file_name = dir.get_next()
-	#
-	#dir.list_dir_end()
-	#print(scenes)
-	#return true

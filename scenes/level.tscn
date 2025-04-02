@@ -2,9 +2,16 @@
 
 [ext_resource type="Script" uid="uid://cc1mrxff6ievj" path="res://script/game_manager.gd" id="1_mx8sn"]
 [ext_resource type="PackedScene" uid="uid://blho4p6ofj3q0" path="res://scenes/player.tscn" id="1_w8frs"]
-[ext_resource type="Script" uid="uid://ebnrwxb55f3j" path="res://script/spawner_4.gd" id="4_2r41h"]
+[ext_resource type="AudioStream" uid="uid://c1sbdgf4am6ed" path="res://sound/sound_effect/pickupCoin.wav" id="4_2r41h"]
 [ext_resource type="Texture2D" uid="uid://bpedcou1wbhlx" path="res://sprites/bckg.png" id="4_mx8sn"]
 [ext_resource type="Script" uid="uid://0ndhede8g0ex" path="res://script/spawner.gd" id="4_ppgk2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mx8sn"]
+size = Vector2(1335, 20)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_w8frs"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mx8sn"]
 
 [sub_resource type="Curve2D" id="Curve2D_w8frs"]
 _data = {
@@ -12,82 +19,41 @@ _data = {
 }
 point_count = 2
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_w8frs"]
+[node name="Root" type="Node2D"]
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mx8sn"]
+[node name="Parallax2D" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0, 1)
+repeat_size = Vector2(0, 1433.64)
+repeat_times = 5
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mx8sn"]
-size = Vector2(1335, 20)
-
-[node name="Node2D" type="Node2D"]
-
-[node name="Bckg" type="Sprite2D" parent="."]
-position = Vector2(672, 1278)
+[node name="Bckg" type="Sprite2D" parent="Parallax2D"]
+position = Vector2(672, 0)
 scale = Vector2(1.32227, 1.4209)
-texture = ExtResource("4_mx8sn")
-
-[node name="Bckg" type="Sprite2D" parent="Bckg"]
-position = Vector2(-0.00147903, -1216.55)
-rotation = 3.14159
-scale = Vector2(0.999997, 1.3761)
 texture = ExtResource("4_mx8sn")
 
 [node name="GameManager" type="Node2D" parent="."]
 script = ExtResource("1_mx8sn")
 
-[node name="Spawner2" type="Path2D" parent="GameManager"]
-position = Vector2(617, -500)
-scale = Vector2(0.471094, 1)
-curve = SubResource("Curve2D_w8frs")
-script = ExtResource("4_ppgk2")
+[node name="WinSound" type="AudioStreamPlayer" parent="GameManager"]
+stream = ExtResource("4_2r41h")
+volume_db = -19.877
+bus = &"SFX"
 
-[node name="Timer" type="Timer" parent="GameManager/Spawner2"]
-autostart = true
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, -3064)
+collision_layer = 7
+collision_mask = 4
 
-[node name="SpawnPoint" type="PathFollow2D" parent="GameManager/Spawner2"]
-position = Vector2(1280, 0)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(651.5, 1.49997)
 rotation = 3.14159
+shape = SubResource("RectangleShape2D_mx8sn")
 
-[node name="Spawner3" type="Path2D" parent="GameManager"]
-position = Vector2(250, -1500)
-scale = Vector2(0.471094, 1)
-curve = SubResource("Curve2D_w8frs")
-script = ExtResource("4_ppgk2")
-
-[node name="Timer" type="Timer" parent="GameManager/Spawner3"]
-autostart = true
-
-[node name="SpawnPoint" type="PathFollow2D" parent="GameManager/Spawner3"]
-position = Vector2(1280, 0)
-rotation = 3.14159
-
-[node name="Spawner" type="Path2D" parent="GameManager"]
-position = Vector2(51, -500)
-scale = Vector2(0.382031, 1)
-curve = SubResource("Curve2D_w8frs")
-script = ExtResource("4_ppgk2")
-
-[node name="Timer" type="Timer" parent="GameManager/Spawner"]
-wait_time = 2.0
-autostart = true
-
-[node name="SpawnPoint" type="PathFollow2D" parent="GameManager/Spawner"]
-position = Vector2(1280, 0)
-rotation = 3.14159
-
-[node name="Spawner4" type="Path2D" parent="GameManager"]
-position = Vector2(0, 700)
-scale = Vector2(1, 2.618)
-curve = SubResource("Curve2D_w8frs")
-script = ExtResource("4_2r41h")
-
-[node name="Timer" type="Timer" parent="GameManager/Spawner4"]
-wait_time = 2.0
-autostart = true
-
-[node name="SpawnPoint" type="PathFollow2D" parent="GameManager/Spawner4"]
-position = Vector2(1280, 0)
-rotation = 3.14159
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+modulate = Color(0, 0.560784, 0, 0.635294)
+position = Vector2(670, 4)
+scale = Vector2(1.3457, 0.0195313)
+texture = ExtResource("4_mx8sn")
 
 [node name="Walls" type="Node2D" parent="."]
 
@@ -110,19 +76,27 @@ position = Vector2(1280, 0)
 rotation = 4.71239
 shape = SubResource("WorldBoundaryShape2D_w8frs")
 
-[node name="Area2D" type="Area2D" parent="Walls"]
-collision_layer = 7
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Area2D"]
-position = Vector2(651.5, 1.49997)
-rotation = 3.14159
-shape = SubResource("RectangleShape2D_mx8sn")
-
 [node name="Platforms" type="Node2D" parent="."]
+
+[node name="Spawner" type="Path2D" parent="." node_paths=PackedStringArray("target", "platforms")]
+position = Vector2(0, 1100)
+curve = SubResource("Curve2D_w8frs")
+script = ExtResource("4_ppgk2")
+target = NodePath("../Player")
+platforms = NodePath("../Platforms")
+min_delay = 1.0
+
+[node name="Timer" type="Timer" parent="Spawner"]
+wait_time = 0.1
+autostart = true
+
+[node name="SpawnPoint" type="PathFollow2D" parent="Spawner"]
+position = Vector2(1280, 0)
+rotation = 3.14159
 
 [node name="Player" parent="." instance=ExtResource("1_w8frs")]
 position = Vector2(700, 1800)
+floor_max_angle = 1.09956
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 limit_left = 0
@@ -131,8 +105,38 @@ limit_bottom = 2000
 limit_smoothed = true
 drag_vertical_enabled = true
 
-[connection signal="timeout" from="GameManager/Spawner2/Timer" to="GameManager/Spawner2" method="_on_timer_timeout"]
-[connection signal="timeout" from="GameManager/Spawner3/Timer" to="GameManager/Spawner3" method="_on_timer_timeout"]
-[connection signal="timeout" from="GameManager/Spawner/Timer" to="GameManager/Spawner" method="_on_timer_timeout"]
-[connection signal="timeout" from="GameManager/Spawner4/Timer" to="GameManager/Spawner4" method="_on_timer_timeout"]
-[connection signal="body_entered" from="Walls/Area2D" to="GameManager" method="_on_area_2d_body_entered"]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 67.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+
+[node name="TimeToEscape" type="Label" parent="CanvasLayer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "0"
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -55.0
+offset_bottom = 67.0
+grow_horizontal = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+
+[node name="DistanceToEscape" type="Label" parent="CanvasLayer/MarginContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "10"
+
+[connection signal="body_entered" from="Area2D" to="GameManager" method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Spawner/Timer" to="Spawner" method="_on_timer_timeout"]
+[connection signal="Dead" from="Player" to="GameManager" method="_on_player_dead"]

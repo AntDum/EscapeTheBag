@@ -1,4 +1,7 @@
 extends Control
 
+@onready var click_sound: AudioStreamPlayer = $ClickSound
+
 func _on_again_button_pressed() -> void:
-	ObjectList.play()
+	click_sound.play()
+	SceneManager.play()

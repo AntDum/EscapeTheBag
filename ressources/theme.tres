@@ -4,6 +4,8 @@
 bg_color = Color(0, 0.664243, 0.822847, 1)
 
 [resource]
+Button/constants/outline_size = 5
 Button/font_sizes/font_size = 32
 Button/styles/normal = SubResource("StyleBoxFlat_cgkd3")
+Label/constants/outline_size = 5
 Label/font_sizes/font_size = 48

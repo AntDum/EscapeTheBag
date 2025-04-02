@@ -18,6 +18,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 ObjectList="*res://singletons/object_list.gd"
+SceneManager="*res://singletons/scene_manager.gd"
+BackgroundMusic="*res://singletons/background_music.tscn"
 
 [display]
 

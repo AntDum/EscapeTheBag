@@ -1,8 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://cc3srmth1qftd"]
+[gd_scene load_steps=8 format=3 uid="uid://cc3srmth1qftd"]
 
 [ext_resource type="Script" uid="uid://1r4vmcnsjjbn" path="res://script/death.gd" id="1_0hhgj"]
+[ext_resource type="Texture2D" uid="uid://bpedcou1wbhlx" path="res://sprites/bckg.png" id="2_w8wr1"]
+[ext_resource type="AudioStream" uid="uid://c2w6q5sp86uyu" path="res://sound/sound_effect/click.wav" id="3_tjai8"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w8wr1"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_0hhgj"]
+device = -1
+pressed = true
+keycode = 4194309
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_w8wr1"]
+pressed = true
+
+[sub_resource type="Shortcut" id="Shortcut_tjai8"]
+events = [SubResource("InputEventKey_0hhgj"), SubResource("InputEventJoypadButton_w8wr1")]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -12,6 +25,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0hhgj")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(1, 0.305882, 1, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_w8wr1")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -34,6 +57,11 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_w8wr1")
 
 [node name="AgainButton" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
+shortcut = SubResource("Shortcut_tjai8")
 text = "Play again"
+
+[node name="ClickSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_tjai8")
+bus = &"UI"
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/AgainButton" to="." method="_on_again_button_pressed"]

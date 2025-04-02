@@ -1,4 +1,35 @@
-[gd_scene format=3 uid="uid://ck2v6rhyq4l21"]
+[gd_scene load_steps=10 format=3 uid="uid://ck2v6rhyq4l21"]
+
+[ext_resource type="Script" uid="uid://cw6tqgwc5ubq" path="res://script/win.gd" id="1_r4oei"]
+[ext_resource type="Texture2D" uid="uid://bpedcou1wbhlx" path="res://sprites/bckg.png" id="2_826fv"]
+[ext_resource type="Script" uid="uid://0ndhede8g0ex" path="res://script/spawner.gd" id="3_iiocm"]
+
+[sub_resource type="Curve2D" id="Curve2D_yxbqr"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3350, 0)
+}
+point_count = 2
+
+[sub_resource type="InputEventKey" id="InputEventKey_iiocm"]
+device = -1
+pressed = true
+keycode = 4194309
+
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_yxbqr"]
+pressed = true
+
+[sub_resource type="Shortcut" id="Shortcut_tylv2"]
+events = [SubResource("InputEventKey_iiocm"), SubResource("InputEventJoypadButton_yxbqr")]
+
+[sub_resource type="GDScript" id="GDScript_tylv2"]
+script/source = "extends Area2D
+
+
+func _on_body_entered(body: Node2D) -> void:
+	body.queue_free()
+"
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5vxan"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -7,6 +38,36 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_r4oei")
+
+[node name="Spawner" type="Path2D" parent="." node_paths=PackedStringArray("platforms")]
+position = Vector2(0, -200)
+scale = Vector2(0.382031, 1)
+curve = SubResource("Curve2D_yxbqr")
+script = ExtResource("3_iiocm")
+platforms = NodePath("../Objects")
+min_delay = 0.2
+max_delay = 0.7
+scale_object = 1.0
+
+[node name="Timer" type="Timer" parent="Spawner"]
+wait_time = 0.05
+autostart = true
+
+[node name="SpawnPoint" type="PathFollow2D" parent="Spawner"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.0941176, 1, 1, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_826fv")
+
+[node name="Objects" type="Node2D" parent="."]
+position = Vector2(0, -152)
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -16,8 +77,42 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="CenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 layout_mode = 2
-text = "You escaped
-Thank for playing"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "You escaped in"
+
+[node name="Time" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "100s"
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Thank for playing"
 horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+shortcut = SubResource("Shortcut_tylv2")
+text = "Play again"
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(608, 1040)
+script = SubResource("GDScript_tylv2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("WorldBoundaryShape2D_5vxan")
+metadata/_edit_lock_ = true
+
+[connection signal="timeout" from="Spawner/Timer" to="Spawner" method="_on_timer_timeout"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
